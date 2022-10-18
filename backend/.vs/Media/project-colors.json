@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "89c352ef-0a85-4f91-8e5b-6c5f31834185": {
+      "ProjectGuid": "89c352ef-0a85-4f91-8e5b-6c5f31834185",
+      "DisplayName": "Api.Host",
+      "ColorIndex": 0
+    },
+    "d982df6f-26d7-4651-bdfc-99f3c266e41c": {
+      "ProjectGuid": "d982df6f-26d7-4651-bdfc-99f3c266e41c",
+      "DisplayName": "Api.Contracts",
+      "ColorIndex": 1
+    },
+    "c287e103-f3fb-40ce-9609-b479b47224bb": {
+      "ProjectGuid": "c287e103-f3fb-40ce-9609-b479b47224bb",
+      "DisplayName": "Api.Services",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}
