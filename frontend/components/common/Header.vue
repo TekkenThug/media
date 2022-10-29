@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" data-app>
     <div class="header__center">
       <UIInput
         v-model="searchValue"
@@ -53,6 +53,8 @@ export default {
           title: 'Войдите в систему',
           text: 'Создание статьи доступно только авторизованным пользователям'
         })
+      } else {
+        this.$router.push('/editor')
       }
     }
   }
