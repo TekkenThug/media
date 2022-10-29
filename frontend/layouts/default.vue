@@ -1,32 +1,34 @@
 <template>
-  <a-layout class="site-layout">
-    <a-layout-header>
-      Header
-    </a-layout-header>
+  <div class="site-layout">
+    <Header />
 
-    <a-layout-content class="site-layout__content">
+    <main class="site-layout__content">
       <Nuxt />
-    </a-layout-content>
-
-    <a-layout-footer>
-      Footer
-    </a-layout-footer>
-  </a-layout>
+    </main>
+  </div>
 </template>
 
 <script>
+import Header from '@/components/common/Header'
+
 export default {
-  name: 'Default'
+  name: 'Default',
+
+  components: {
+    Header
+  }
 }
 </script>
 
 <style>
   .site-layout {
     display: flex;
+    flex-direction: column;
     min-height: 100vh;
   }
 
   .site-layout__content {
     flex-grow: 1;
+    padding-top: 16px;
   }
 </style>
