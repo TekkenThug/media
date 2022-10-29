@@ -1,8 +1,8 @@
 <template>
   <article class="island">
-    <h2 class="island__header">
+    <h3 class="island__header">
       {{ header }}
-    </h2>
+    </h3>
 
     <p v-if="content" class="island__content" v-html="content" />
 
