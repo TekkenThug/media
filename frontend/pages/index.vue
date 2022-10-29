@@ -1,21 +1,23 @@
 <template>
-  <div class="feed" data-app>
-    <v-select
-      v-model="dateFilter"
-      :items="dateFilterSet"
-      label="Фильтр по дате"
-      solo
-    ></v-select>
+  <section class="main">
+    <div class="main__feed" data-app>
+      <v-select
+        v-model="dateFilter"
+        :items="dateFilterSet"
+        label="Фильтр по дате"
+        solo
+      ></v-select>
 
-    <Island
-      v-for="(item, index) in news"
-      :key="index"
-      class="feed__item"
-      :header="item.title"
-      :content="item.text"
-      :link="item.link"
-    />
-  </div>
+      <Island
+        v-for="(item, index) in news"
+        :key="index"
+        class="main__feed-item"
+        :header="item.title"
+        :content="item.text"
+        :link="item.link"
+      />
+    </div>
+  </section>
 </template>
 
 <script>
@@ -72,15 +74,13 @@ export default {
 </script>
 
 <style lang="sass">
-.feed
-  max-width: 640px
-  width: 100%
+.main
   padding-top: 28px
 
   &__search
     margin-bottom: 28px
 
-  &__item
+  &__feed-item
     & + &
       margin-top: 28px
 </style>
