@@ -1,6 +1,6 @@
 <template>
   <section class="main">
-    <div class="main__feed" data-app>
+    <div class="main__feed">
       <v-select
         v-model="dateFilter"
         :items="dateFilterSet"

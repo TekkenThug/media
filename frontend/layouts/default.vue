@@ -1,5 +1,5 @@
 <template>
-  <div class="site-layout">
+  <div class="site-layout" data-app>
     <Header />
 
     <main class="site-layout__content">
