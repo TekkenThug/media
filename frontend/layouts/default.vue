@@ -5,6 +5,8 @@
     <main class="site-layout__content">
       <Nuxt />
     </main>
+
+    <notifications position="bottom right" />
   </div>
 </template>
 
@@ -20,15 +22,18 @@ export default {
 }
 </script>
 
-<style>
-  .site-layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
+<style lang="sass">
+  .site-layout
+    display: flex
+    flex-direction: column
+    min-height: 100vh
+    align-items: center
 
-  .site-layout__content {
-    flex-grow: 1;
-    padding-top: 16px;
-  }
+    &__content
+      flex-grow: 1
+
+    &__notification
+      position: fixed
+      bottom: 15px
+      right: 15px
 </style>
