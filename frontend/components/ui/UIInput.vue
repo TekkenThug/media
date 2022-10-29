@@ -35,7 +35,7 @@ export default {
 
   &__field
     width: 100%
-    padding: 12px 10px
+    padding: 12px 20px
     outline: none
     color: inherit
 
