@@ -1,5 +1,5 @@
 <template>
-  <header class="header" data-app>
+  <header class="header">
     <div class="header__center">
       <UIInput
         v-model="searchValue"
@@ -18,31 +18,61 @@
             v-on="on"
             @click="openEditor"
           >
-            <EditIcon />
+            <v-icon>
+              mdi-pencil-outline
+            </v-icon>
           </v-btn>
         </template>
 
         Создать статью
       </v-tooltip>
     </div>
+
+    <div class="header__right">
+      <v-tooltip bottom>
+        <template #activator="{ on, attrs }">
+          <v-btn
+            min-width="44"
+            height="48"
+            width="48"
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon>
+              {{ profileIcon }}
+            </v-icon>
+          </v-btn>
+        </template>
+
+        {{ profileTooltipCaption }}
+      </v-tooltip>
+    </div>
   </header>
 </template>
 
 <script>
-import { EditIcon } from '@iconicicons/vue'
 import UIInput from '@/components/ui/UIInput'
 
 export default {
   name: 'Header',
 
   components: {
-    EditIcon,
     UIInput
   },
 
   data () {
     return {
       searchValue: ''
+    }
+  },
+
+  computed: {
+    profileTooltipCaption () {
+      return this.$store.state.user.isAuth ? 'Выйти' : 'Войти'
+    },
+
+    profileIcon () {
+      return this.$store.state.user.isAuth ? 'mdi-account-arrow-right-outline' : 'mdi-account-arrow-left-outline'
     }
   },
 
@@ -63,20 +93,30 @@ export default {
 
 <style lang="sass" scoped>
 @import "assets/sass/_variables"
+@import "assets/sass/mixins"
 
 .header
+  position: relative
   display: flex
   align-items: center
   justify-content: center
   width: 100%
-  padding: 10px 24px
+  min-height: 68px
+  padding: 10px 15px
   background-color: $slate-blue
+
+  @include mobile
+    justify-content: flex-start
 
   &__center
     display: flex
     align-items: stretch
     max-width: 640px
     width: 100%
+
+    @include mobile
+      max-width: none
+      padding-right: 58px
 
   &__search
     flex-grow: 1
@@ -86,5 +126,6 @@ export default {
     margin-left: 10px
 
   &__right
-    margin-left: auto
+    position: absolute
+    right: 15px
 </style>
