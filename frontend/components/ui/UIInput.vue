@@ -49,7 +49,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 @import "assets/sass/variables"
 
 .ui-input
@@ -67,6 +67,7 @@ export default {
     transition: all .3s ease
 
     &::placeholder
+      opacity: .4
       color: inherit
 
   &__error
