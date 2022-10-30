@@ -1,12 +1,18 @@
 <template>
-  <div class="ui-input">
+  <div :class="['ui-input', { '_error': isError }]">
     <input
       :value="value"
-      type="text"
+      :type="type"
       class="ui-input__field"
       :placeholder="placeholder"
-      @change="$emit('change', $event.target.value)"
+      @input="$emit('input', $event.target.value)"
     >
+
+    <transition name="fade">
+      <div v-if="isError" class="ui-input__error">
+        {{ errorText }}
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -23,22 +29,48 @@ export default {
     placeholder: {
       type: String,
       default: ''
+    },
+
+    type: {
+      type: String,
+      default: 'text'
+    },
+
+    isError: {
+      type: Boolean,
+      default: false
+    },
+
+    errorText: {
+      type: String,
+      default: ''
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
+@import "assets/sass/variables"
+
 .ui-input
-  border-radius: 9px
-  border: 2px solid #fff
+  &._error
+    .ui-input__field
+      border-color: #FF331F
 
   &__field
     width: 100%
-    padding: 12px 20px
+    padding: 12px
     outline: none
+    border-radius: 9px
+    border: 2px solid $black
     color: inherit
+    transition: all .3s ease
 
     &::placeholder
-      color: #fff
+      color: inherit
+
+  &__error
+    color: #FF331F
+    padding-left: 12px
+    font-size: 12px
 </style>
