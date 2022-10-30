@@ -19,6 +19,24 @@ h3
   font-size: 22px
   line-height: 28px
 
+a.link
+  display: inline-block
+  padding-bottom: 2px
+  border-bottom: 1px solid $slate-blue
+  color: $slate-blue
+  text-decoration: none
+  transition: all .3s ease
+
+  &:hover
+    color: lighten($slate-blue, $darkMulti)
+    border-color: lighten($slate-blue, $darkMulti)
+
 .vm--modal
   padding: 24px
   border-radius: $border-radius-root !important
+
+.fade-enter-active, .fade-leave-active
+  transition: opacity .3s
+
+.fade-enter, .fade-leave-to
+  opacity: 0
