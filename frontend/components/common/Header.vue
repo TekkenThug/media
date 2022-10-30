@@ -37,6 +37,7 @@
             width="48"
             v-bind="attrs"
             v-on="on"
+            @click="handleUserBtnClick"
           >
             <v-icon>
               {{ profileIcon }}
@@ -47,17 +48,27 @@
         {{ profileTooltipCaption }}
       </v-tooltip>
     </div>
+
+    <Modal
+      name="auth"
+      adaptive
+      height="auto"
+    >
+      <ModalAuth />
+    </Modal>
   </header>
 </template>
 
 <script>
 import UIInput from '@/components/ui/UIInput'
+import ModalAuth from '@/components/modals/modal-auth/'
 
 export default {
   name: 'Header',
 
   components: {
-    UIInput
+    UIInput,
+    ModalAuth
   },
 
   data () {
@@ -67,12 +78,16 @@ export default {
   },
 
   computed: {
+    isAuth () {
+      return this.$store.state.user.isAuth
+    },
+
     profileTooltipCaption () {
-      return this.$store.state.user.isAuth ? 'Выйти' : 'Войти'
+      return this.isAuth ? 'Профиль' : 'Войти'
     },
 
     profileIcon () {
-      return this.$store.state.user.isAuth ? 'mdi-account-arrow-right-outline' : 'mdi-account-arrow-left-outline'
+      return this.isAuth ? 'mdi-account-outline' : 'mdi-account-arrow-left-outline'
     }
   },
 
@@ -85,6 +100,14 @@ export default {
         })
       } else {
         this.$router.push('/editor')
+      }
+    },
+
+    handleUserBtnClick () {
+      if (this.isAuth) {
+        this.$router.push('/profile')
+      } else {
+        this.$modal.show('auth')
       }
     }
   }
@@ -121,6 +144,9 @@ export default {
   &__search
     flex-grow: 1
     color: #fff
+
+    ::v-deep .ui-input__field
+      border-color: #fff
 
   &__create-btn
     margin-left: 10px
