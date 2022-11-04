@@ -94,6 +94,8 @@ export default {
     ProfileImage
   },
 
+  middleware: ['authenticated'],
+
   data () {
     return {
       image: 'https://64.media.tumblr.com/49a172ac8d8a444ec541bf6f96406e6f/09e3b25b9304d0e6-14/s250x400/0a259c112c38b81b3925653f70f769faaf9dca42.png',
