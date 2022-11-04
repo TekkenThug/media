@@ -62,7 +62,7 @@
       adaptive
       height="auto"
     >
-      <ModalAuth />
+      <ModalAuth @success="closeModal" />
     </Modal>
   </header>
 </template>
@@ -126,6 +126,10 @@ export default {
       } else {
         this.$store.commit('app/toggleSidebar')
       }
+    },
+
+    closeModal () {
+      this.$modal.hide('auth')
     }
   }
 }

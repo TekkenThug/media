@@ -42,7 +42,7 @@ export default {
 
     linkText () {
       return this.mode === 'auth' ? 'Нет аккаунта? Зарегистрируйтесь' : 'Есть аккаунт? Войдите'
-    },
+    }
   },
 
   methods: {
@@ -50,8 +50,19 @@ export default {
       this.mode = this.mode === 'auth' ? 'register' : 'auth'
     },
 
-    auth (data) {
-      console.log(data)
+    async auth (authData) {
+      try {
+        const { data } = await this.$axios.post('/auth', authData)
+
+        this.$store.commit('user/setAuthState', data.user.role)
+        this.$emit('success')
+      } catch (e) {
+        this.$notify({
+          title: 'Ошибка при входе',
+          type: 'error',
+          text: 'Пожалуйста, повторите позже'
+        })
+      }
     },
 
     register (data) {
