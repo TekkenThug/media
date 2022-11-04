@@ -4,16 +4,16 @@
       <nav class="sidebar__nav">
         <ul class="sidebar__list">
           <li
-            v-for="item in items"
-            :key="item.title"
+            v-for="route in allowedRoutes"
+            :key="route.title"
             class="sidebar__item"
           >
-            <NuxtLink class="sidebar__item-link" :to="item.to">
+            <NuxtLink class="sidebar__item-link" :to="route.to">
               <v-icon class="sidebar__item-icon">
-                {{ item.icon }}
+                {{ route.icon }}
               </v-icon>
 
-              {{ item.title }}
+              {{ route.title }}
             </NuxtLink>
           </li>
         </ul>
@@ -66,22 +66,28 @@ export default {
         {
           title: 'Лента',
           icon: 'mdi-rss',
-          to: '/'
+          to: '/',
+          auth: false
         },
         {
           title: 'Администрирование',
           icon: 'mdi-shield-crown-outline',
-          to: '/admin'
+          to: '/admin',
+          auth: true,
+          role: ['admin']
         },
         {
           title: 'Профиль',
           icon: 'mdi-account-circle-outline',
-          to: '/profile'
+          to: '/profile',
+          auth: true
         },
         {
           title: 'Статьи',
           icon: 'mdi-post-outline',
-          to: '/publications'
+          to: '/publications',
+          auth: true,
+          role: ['editor', 'admin', 'copywriter']
         }
       ]
     }
@@ -94,6 +100,17 @@ export default {
 
     hasMobileSidebar () {
       return this.$store.state.app.hasMobileSidebar
+    },
+
+    allowedRoutes () {
+      const isAuth = this.$store.state.user.isAuth
+      const role = this.$store.state.user.role
+
+      return this.items.filter((item) => {
+        if (!item.auth) { return true }
+
+        return Boolean(item.auth && isAuth && (!item.role || item.role.includes(role)))
+      })
     }
   },
 
