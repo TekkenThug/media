@@ -1,5 +1,9 @@
 <template>
   <div :class="['ui-input', { '_error': isError }]">
+    <label v-if="label" class="ui-input__label">
+      {{ label }}
+    </label>
+
     <input
       :value="value"
       :type="type"
@@ -31,6 +35,11 @@ export default {
       default: ''
     },
 
+    label: {
+      type: String,
+      default: ''
+    },
+
     type: {
       type: String,
       default: 'text'
@@ -56,6 +65,12 @@ export default {
   &._error
     .ui-input__field
       border-color: #FF331F
+
+  &__label
+    display: inline-block
+    padding-left: 10px
+    margin-bottom: 5px
+    font-weight: 600
 
   &__field
     width: 100%
