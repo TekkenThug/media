@@ -6,16 +6,18 @@
         :items="dateFilterSet"
         label="Фильтр по дате"
         solo
-      ></v-select>
-
-      <FeedItem
-        v-for="(item, index) in news"
-        :key="index"
-        class="main__feed-item"
-        :header="item.title"
-        :content="item.text"
-        :link="item.link"
       />
+
+      <transition-group name="fade">
+        <FeedItem
+          v-for="item in news"
+          :key="item.id"
+          class="main__feed-item"
+          :header="item.title"
+          :content="item.text"
+          :link="item.link"
+        />
+      </transition-group>
     </div>
   </section>
 </template>
@@ -25,7 +27,19 @@ import FeedItem from '~/components/feed/FeedItem'
 
 export default {
   name: 'IndexPage',
+
   components: { FeedItem },
+
+  async asyncData ({ $axios }) {
+    const { data: { news } } = await $axios.get('/news')
+
+    return {
+      news: news.map((item) => {
+        return { ...item, link: `/article/${item.id}` }
+      })
+    }
+  },
+
   data () {
     return {
       dateFilter: 'today',
@@ -51,23 +65,7 @@ export default {
           value: 'year'
         }
       ],
-      news: [
-        {
-          title: 'Сотрудникам Twitter поручили распечатать копии кода, создали «военную комнату»: NYT — о первом дне Маска в офисе',
-          text: 'Предприниматель уже успел уволить несколько топ-менеджеров, писали СМИ.',
-          link: '/article/1'
-        },
-        {
-          title: 'Мой мелкий, но железный бизнес',
-          text: 'Июнь 2012 года. Звонок в дверь. На пороге немолодая пара: «Мы по объявлению». Мужчина огромных размеров еле вместился в прихожую хрущёвки, то и дело цепляясь за дверные косяки. Не мой клиент, подумал я. Но случилось чудо – позвонили на следующий день и приехали с риелтором. Москва, чемодан, вокзал. Депозитный счет в банке с процентами в $1300 в…',
-          link: '/article/2'
-        },
-        {
-          title: 'Подан коллективный иск к организатору спортивного мероприятия Challenge Moscow',
-          text: 'Спортсмены подали коллективный иск к организатору соревнований по триатлону ООО “Спортлайв”. Соревнования должны были состояться в июне 2022, но были отменены. Участие в мероприятии было платным.',
-          link: '/article/3'
-        }
-      ]
+      news: []
     }
   }
 }
