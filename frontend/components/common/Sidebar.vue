@@ -35,16 +35,16 @@
       <nav class="sidebar__nav">
         <ul class="sidebar__list">
           <li
-            v-for="item in items"
-            :key="item.title"
+            v-for="route in allowedRoutes"
+            :key="route.title"
             class="sidebar__item"
           >
-            <NuxtLink class="sidebar__item-link" :to="item.to">
+            <NuxtLink class="sidebar__item-link" :to="route.to">
               <v-icon class="sidebar__item-icon">
-                {{ item.icon }}
+                {{ route.icon }}
               </v-icon>
 
-              {{ item.title }}
+              {{ route.title }}
             </NuxtLink>
           </li>
         </ul>
