@@ -1,5 +1,13 @@
 <template>
   <header class="header">
+    <div class="header__left">
+      <button class="header__burger" @click="toggleSidebar">
+        <v-icon color="#fff">
+          mdi-menu
+        </v-icon>
+      </button>
+    </div>
+
     <div class="header__center">
       <UIInput
         v-model="searchValue"
@@ -60,6 +68,7 @@
 </template>
 
 <script>
+import { MEDIA_VARIABLES } from '@/data/constats'
 import UIInput from '@/components/ui/UIInput'
 import ModalAuth from '@/components/modals/modal-auth/'
 
@@ -109,6 +118,14 @@ export default {
       } else {
         this.$modal.show('auth')
       }
+    },
+
+    toggleSidebar () {
+      if (window.innerWidth <= MEDIA_VARIABLES.sidebar) {
+        this.$store.commit('app/toggleMobileSidebar')
+      } else {
+        this.$store.commit('app/toggleSidebar')
+      }
     }
   }
 }
@@ -119,17 +136,27 @@ export default {
 @import "assets/sass/mixins"
 
 .header
-  position: relative
+  position: fixed
+  top: 0
+  left: 0
+  z-index: $headerIndex
   display: flex
   align-items: center
   justify-content: center
   width: 100%
-  min-height: 68px
+  min-height: $headerHeight
   padding: 10px 15px
   background-color: $slate-blue
 
   @include mobile
     justify-content: flex-start
+
+  &__left
+    position: absolute
+    left: 15px
+    top: 50%
+    transform: translateY(-50%)
+    color: #fff
 
   &__center
     display: flex
@@ -140,6 +167,7 @@ export default {
     @include mobile
       max-width: none
       padding-right: 58px
+      padding-left: 42px
 
   &__search
     flex-grow: 1
