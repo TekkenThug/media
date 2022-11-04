@@ -1,4 +1,5 @@
 @import 'variables'
+@import 'mixins'
 
 body
   background-color: $cultured
@@ -37,18 +38,6 @@ ul, li
 a
   text-decoration: none
   color: inherit
-
-a.link
-  display: inline-block
-  padding-bottom: 2px
-  border-bottom: 1px solid $slate-blue
-  color: $slate-blue
-  text-decoration: none
-  transition: all .3s ease
-
-  &:hover
-    color: lighten($slate-blue, $darkMulti)
-    border-color: lighten($slate-blue, $darkMulti)
 
 .vm--modal
   padding: 24px

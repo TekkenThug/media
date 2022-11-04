@@ -1,3 +1,17 @@
+@import 'variables'
+
 @mixin mobile()
   @media (max-width: 860px)
     @content
+
+@mixin link
+  display: inline-block
+  padding-bottom: 2px
+  border-bottom: 1px solid $slate-blue
+  color: $slate-blue
+  text-decoration: none
+  transition: all .3s ease
+
+  &:hover
+    color: lighten($slate-blue, $darkMulti)
+    border-color: lighten($slate-blue, $darkMulti)
