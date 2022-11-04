@@ -40,7 +40,7 @@ export default {
       flex-grow: 1
       max-width: 670px
       width: 100%
-      padding: 0 15px
+      padding: 28px 15px 0
 
     &__notification
       position: fixed
