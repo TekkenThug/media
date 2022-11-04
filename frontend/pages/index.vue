@@ -8,7 +8,7 @@
         solo
       ></v-select>
 
-      <Island
+      <FeedItem
         v-for="(item, index) in news"
         :key="index"
         class="main__feed-item"
@@ -21,11 +21,11 @@
 </template>
 
 <script>
-import Island from '~/components/island/Island'
+import FeedItem from '~/components/feed/FeedItem'
 
 export default {
   name: 'IndexPage',
-  components: { Island },
+  components: { FeedItem },
   data () {
     return {
       dateFilter: 'today',
@@ -75,8 +75,6 @@ export default {
 
 <style lang="sass">
 .main
-  padding-top: 28px
-
   &__search
     margin-bottom: 28px
 
