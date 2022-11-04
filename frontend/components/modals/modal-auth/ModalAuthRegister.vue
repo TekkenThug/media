@@ -69,10 +69,8 @@
 
 <script>
 import { required, email, sameAs } from 'vuelidate/lib/validators'
-import { RUS_PHONE_REGEX } from '@/data/constats'
+import { isPhone } from '@/utils/string'
 import UIInput from '@/components/ui/UIInput'
-
-const isPhone = value => RUS_PHONE_REGEX.test(value)
 
 export default {
   name: 'ModalAuthRegister',
@@ -196,14 +194,12 @@ export default {
           login: this.login,
           email: this.email,
           password: this.password,
-          name: this.createFullName(),
+          firstName: this.firstName,
+          secondName: this.secondName,
+          ...(this.thirdName && { thirdName: this.thirdName }),
           phone: this.phone
         })
       }
-    },
-
-    createFullName () {
-      return `${this.secondName} ${this.firstName}${this.thirdName ? ` ${this.thirdName}` : ''}`
     }
   }
 }
