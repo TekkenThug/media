@@ -62,9 +62,12 @@ export default {
     padding: 12px
     outline: none
     border-radius: 9px
-    border: 2px solid $black
+    border: 1px solid $gainsboro
     color: inherit
     transition: all .3s ease
+
+    &:focus
+      border-color: $slate-blue
 
     &::placeholder
       opacity: .4

@@ -175,6 +175,7 @@ export default {
 
     ::v-deep .ui-input__field
       border-color: #fff
+      border-width: 2px
 
   &__create-btn
     margin-left: 10px
