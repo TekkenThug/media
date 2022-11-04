@@ -11,7 +11,7 @@
     <div class="modal-auth__btn-wrapper">
       <a
         href="#"
-        class="link modal-auth__link"
+        class="modal-auth__link"
         @click.prevent="changeMode"
       >
         {{ linkText }}
@@ -73,6 +73,8 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+@import "assets/sass/mixins"
+
 .modal-auth
   display: flex
   flex-direction: column
@@ -98,6 +100,7 @@ export default {
       margin-bottom: 12px
 
   &__link
+    @include link
     margin-top: 20px
     font-size: 14px
 </style>
