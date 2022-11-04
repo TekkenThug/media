@@ -6,28 +6,35 @@
       <Nuxt />
     </main>
 
+    <Sidebar />
+
     <notifications position="bottom right" />
   </div>
 </template>
 
 <script>
 import Header from '@/components/common/Header'
+import Sidebar from '@/components/common/Sidebar'
 
 export default {
   name: 'Default',
 
   components: {
-    Header
+    Header,
+    Sidebar
   }
 }
 </script>
 
 <style lang="sass">
+  @import "assets/sass/_variables.sass"
+
   .site-layout
     display: flex
     flex-direction: column
     min-height: 100vh
     align-items: center
+    padding-top: $headerHeight
 
     &__content
       flex-grow: 1
