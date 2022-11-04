@@ -6,7 +6,8 @@ export function makeServer ({ environment = 'development' } = {}) {
 
     models: {
       user: Model,
-      news: Model
+      news: Model,
+      article: Model
     },
 
     seeds (server) {
@@ -28,6 +29,29 @@ export function makeServer ({ environment = 'development' } = {}) {
         title: 'Подан коллективный иск к организатору спортивного мероприятия Challenge Moscow',
         text: 'Спортсмены подали коллективный иск к организатору соревнований по триатлону ООО “Спортлайв”. Соревнования должны были состояться в июне 2022, но были отменены. Участие в мероприятии было платным.'
       })
+
+      // @ts-ignore
+      server.create('article', {
+        blocks: [
+          {
+            id: 'N0s41Akt8q',
+            type: 'header',
+            data: {
+              text: 'Заголовок',
+              level: 1
+            }
+          },
+          {
+            id: 'bgr-YfzTCk',
+            type: 'paragraph',
+            data: {
+              text: 'Тут <a href="http://google.com">будет</a> <b>текст</b>'
+            }
+          }
+        ],
+        time: 1667588844968,
+        commentsCount: 5
+      })
     },
 
     routes () {
@@ -39,6 +63,10 @@ export function makeServer ({ environment = 'development' } = {}) {
 
       this.get('/news', (schema) => {
         return schema.news.all()
+      })
+
+      this.get('/article/1', (schema) => {
+        return schema.articles.find(1)
       })
     }
   })
