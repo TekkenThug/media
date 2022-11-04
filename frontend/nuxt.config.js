@@ -36,7 +36,8 @@ export default {
     '~/plugins/notify.ts',
     '~/plugins/modal.ts',
     '~/plugins/validate.ts',
-    '~/plugins/mask.ts'
+    '~/plugins/mask.ts',
+    '~/plugins/mirage.ts'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

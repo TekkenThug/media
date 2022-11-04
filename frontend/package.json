@@ -40,6 +40,7 @@
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vue": "^9.5.1",
     "fibers": "^5.0.3",
+    "miragejs": "^0.1.45",
     "postcss-html": "^1.5.0",
     "sass": "^1.55.0",
     "sass-loader": "^10.3.1",
