@@ -73,12 +73,12 @@ export default {
         {
           title: 'Скрыть',
           icon: 'mdi-eye-off-outline',
-          callback: ''
+          callback: () => this.hideComment()
         },
         {
           title: 'Заблокировать',
           icon: 'mdi-cancel',
-          callback: ''
+          callback: () => this.blockUser()
         }
       ]
     }
@@ -88,6 +88,12 @@ export default {
     isModerator () {
       return this.$store.state.user.role === 'moderator'
     }
+  },
+
+  methods: {
+    hideComment () {},
+
+    blockUser () {}
   }
 }
 </script>
@@ -135,14 +141,14 @@ export default {
       display: flex
       align-items: center
       font-size: 12px
-      transition: all .2s linear
+      transition: all .1s linear
       cursor: pointer
 
       &:hover
-        color: $slate-blue
+        color: $sandy-brown
 
         .icon
-          color: $slate-blue
+          color: $sandy-brown
 
       span
         margin-left: 4px
