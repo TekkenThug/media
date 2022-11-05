@@ -1,33 +1,43 @@
 <template>
   <div class="comment-item">
-    <div class="comment-item__top">
-      <div class="comment-item__avatar">
-        <img :src="avatar" alt="">
+    <div v-if="isHidden" class="comment-item__overlay">
+      <v-icon>
+        mdi-eye-off-outline
+      </v-icon>
+
+      <span>Комментарий скрыт</span>
+    </div>
+
+    <template v-else>
+      <div class="comment-item__top">
+        <div class="comment-item__avatar">
+          <img :src="avatar" alt="">
+        </div>
+
+        <h4 class="comment-item__author">
+          {{ author }}
+        </h4>
       </div>
 
-      <h4 class="comment-item__author">
-        {{ author }}
-      </h4>
-    </div>
+      <div class="comment-item__middle">
+        {{ text }}
+      </div>
 
-    <div class="comment-item__middle">
-      {{ text }}
-    </div>
+      <ul v-if="isModerator" class="comment-item__bottom">
+        <li
+          v-for="item in actions"
+          :key="item.title"
+          class="comment-item__action-item"
+          @click="item.callback"
+        >
+          <v-icon class="icon" small>
+            {{ item.icon }}
+          </v-icon>
 
-    <ul v-if="isModerator" class="comment-item__bottom">
-      <li
-        v-for="item in actions"
-        :key="item.title"
-        class="comment-item__action-item"
-        @click="item.callback"
-      >
-        <v-icon class="icon" small>
-          {{ item.icon }}
-        </v-icon>
-
-        <span>{{ item.title }}</span>
-      </li>
-    </ul>
+          <span>{{ item.title }}</span>
+        </li>
+      </ul>
+    </template>
   </div>
 </template>
 
@@ -49,6 +59,11 @@ export default {
     text: {
       type: String,
       required: true
+    },
+
+    isHidden: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -81,6 +96,16 @@ export default {
   @import "assets/sass/variables"
 
   .comment-item
+    &__overlay
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      width: 100%
+      height: 80px
+      border-radius: 8px
+      background-color: $cultured
+
     &__top
       display: flex
       align-items: center
