@@ -1,5 +1,5 @@
 <template>
-  <transition-group name="slide-fade">
+  <transition-group tag="div" name="slide-fade">
     <aside v-if="hasSidebar" key="desktop" class="sidebar _desktop">
       <nav class="sidebar__nav">
         <ul class="sidebar__list">
@@ -140,7 +140,7 @@ export default {
 .sidebar
   $sidebarWidth: 240px
 
-  position: absolute
+  position: fixed
   top: 96px
   left: 0
   width: $sidebarWidth
