@@ -25,6 +25,7 @@
       </h3>
 
       <UITextarea
+        v-if="isAuth"
         v-model="commentText"
         placeholder="Напишите комментарий"
       >
@@ -102,6 +103,10 @@ export default {
   computed: {
     commentsTitle () {
       return pluralize(this.commentsCount, ['комментарий', 'комментария', 'комментариев'])
+    },
+
+    isAuth () {
+      return this.$store.state.user.isAuth
     }
   },
 
