@@ -43,8 +43,6 @@ export default {
   async asyncData ({ $axios }) {
     const { data: { news } } = await $axios.get('/news')
 
-    console.log(news)
-
     return {
       articles: news.map((item) => {
         return { ...item, link: `/article/${item.id}` }
