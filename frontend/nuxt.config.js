@@ -31,6 +31,8 @@ export default {
     '~/assets/sass/_global.sass'
   ],
 
+  pageTransition: 'fade',
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/notify.ts',
