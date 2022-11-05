@@ -19,7 +19,17 @@
       </div>
     </LayoutIsland>
 
-    <LayoutIsland shadowed>
+    <div v-if="draft && isEditor" class="article__draft-section">
+      <v-btn class="accept" @click="resolveDraft('accept')">
+        Опубликовать
+      </v-btn>
+
+      <v-btn class="decline" @click="resolveDraft('decline')">
+        Отклонить
+      </v-btn>
+    </div>
+
+    <LayoutIsland v-else shadowed>
       <h3 class="article__comments-count">
         {{ commentsTitle }}
       </h3>
@@ -51,6 +61,14 @@
         />
       </div>
     </LayoutIsland>
+
+    <Modal
+      name="article-decline"
+      adaptive
+      height="auto"
+    >
+      <ModalArticleDecline @success="closeDeclineModal" />
+    </Modal>
   </article>
 </template>
 
@@ -58,6 +76,7 @@
 import { pluralize } from '@/utils/string'
 import LayoutIsland from '@/components/layouts/LayoutIsland'
 import UITextarea from '@/components/ui/UITextarea'
+import ModalArticleDecline from '@/components/modals/modal-article-decline'
 import CommentItem from '@/components/comments/CommentItem'
 import ArticleHeaderBlock from '@/components/article/blocks/ArticleHeaderBlock'
 import ArticleParagraphBlock from '@/components/article/blocks/ArticleParagraphBlock'
@@ -68,6 +87,7 @@ export default {
   components: {
     LayoutIsland,
     UITextarea,
+    ModalArticleDecline,
     CommentItem,
     ArticleHeaderBlock,
     ArticleParagraphBlock
@@ -84,7 +104,8 @@ export default {
       blocks: article.blocks,
       publicationTimestamp: article.time,
       commentsCount: article.commentsCount,
-      comments: article.comments
+      comments: article.comments,
+      draft: article.draft
     }
   },
 
@@ -96,7 +117,9 @@ export default {
 
       commentText: '',
       comments: [],
-      commentIsSending: false
+      commentIsSending: false,
+
+      draft: false
     }
   },
 
@@ -107,6 +130,10 @@ export default {
 
     isAuth () {
       return this.$store.state.user.isAuth
+    },
+
+    isEditor () {
+      return this.$store.state.user.role === 'editor'
     }
   },
 
@@ -118,12 +145,36 @@ export default {
         this.commentIsSending = false
         this.commentText = ''
       }, 2000)
+    },
+
+    resolveDraft (resolve) {
+      if (resolve === 'accept') {
+        this.$notify({
+          type: 'success',
+          title: 'Статья опубликована'
+        })
+
+        this.$router.push('/publications')
+      } else {
+        this.$modal.show('article-decline')
+      }
+    },
+
+    closeDeclineModal () {
+      this.$modal.hide('article-decline')
+      this.$notify({
+        type: 'success',
+        title: 'Статья отклонена'
+      })
+      this.$router.push('/publications')
     }
   }
 }
 </script>
 
 <style lang="sass" scoped>
+  @import "assets/sass/variables"
+
   .article
     &__content
       margin-bottom: 24px
@@ -143,5 +194,20 @@ export default {
         margin-top: 24px
 
     &__comments-publish-btn
-      color: #fff
+      color: $white
+
+    &__draft-section
+      display: flex
+
+      .accept,
+      .decline
+        color: $white
+
+      .accept
+        margin-left: auto
+        background-color: $may-green
+
+      .decline
+        margin-left: 5px
+        background-color: $upsdellRed
 </style>
