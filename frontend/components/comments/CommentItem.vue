@@ -10,9 +10,24 @@
       </h4>
     </div>
 
-    <div class="comment-item__bottom">
+    <div class="comment-item__middle">
       {{ text }}
     </div>
+
+    <ul v-if="isModerator" class="comment-item__bottom">
+      <li
+        v-for="item in actions"
+        :key="item.title"
+        class="comment-item__action-item"
+        @click="item.callback"
+      >
+        <v-icon class="icon" small>
+          {{ item.icon }}
+        </v-icon>
+
+        <span>{{ item.title }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -34,6 +49,29 @@ export default {
     text: {
       type: String,
       required: true
+    }
+  },
+
+  data () {
+    return {
+      actions: [
+        {
+          title: 'Скрыть',
+          icon: 'mdi-eye-off-outline',
+          callback: ''
+        },
+        {
+          title: 'Заблокировать',
+          icon: 'mdi-cancel',
+          callback: ''
+        }
+      ]
+    }
+  },
+
+  computed: {
+    isModerator () {
+      return this.$store.state.user.role === 'moderator'
     }
   }
 }
@@ -60,6 +98,42 @@ export default {
         height: 100%
         object-fit: cover
 
-    &__bottom
+    &__middle
       margin-top: 8px
+
+    &__bottom
+      display: flex
+      align-items: center
+      margin-top: 8px
+
+    &__action-item
+      display: flex
+      align-items: center
+      font-size: 12px
+      transition: all .2s linear
+      cursor: pointer
+
+      &:hover
+        color: $slate-blue
+
+        .icon
+          color: $slate-blue
+
+      span
+        margin-left: 4px
+
+      &:not(:first-child)
+        position: relative
+        margin-left: 15px
+
+        &:before
+          content: ""
+          position: absolute
+          top: 50%
+          left: -9px
+          transform: translateY(-50%)
+          width: 3px
+          height: 3px
+          border-radius: 50%
+          background-color: darken($gainsboro, 10)
 </style>
