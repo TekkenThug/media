@@ -91,7 +91,7 @@ export default {
           icon: 'mdi-post-outline',
           to: '/publications',
           auth: true,
-          role: ['editor', 'admin', 'copywriter']
+          role: ['editor']
         }
       ]
     }
