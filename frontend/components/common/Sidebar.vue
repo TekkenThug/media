@@ -39,7 +39,11 @@
             :key="route.title"
             class="sidebar__item"
           >
-            <NuxtLink class="sidebar__item-link" :to="route.to">
+            <NuxtLink
+              class="sidebar__item-link"
+              :to="route.to"
+              @click.native="hide"
+            >
               <v-icon class="sidebar__item-icon">
                 {{ route.icon }}
               </v-icon>
