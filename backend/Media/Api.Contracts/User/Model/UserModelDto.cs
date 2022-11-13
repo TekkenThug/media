@@ -13,7 +13,7 @@ public class UserModelDto
     /// <summary>
     /// Возвращает или устанавливает модератора, который заблокировал пользователя.
     /// </summary>
-    public EmployeeModelDto Moderator { get; set; }
+    public virtual EmployeeModelDto Moderator { get; set; }
         
     /// <summary>
     /// Возвращает или устанавливает статус пользователя.

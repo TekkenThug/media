@@ -13,17 +13,17 @@ public class AppointmentModelDto
     /// <summary>
     /// Возвращает или устанавливает администратора, который назначил должность
     /// </summary>
-    public EmployeeModelDto Admin { get; set; }
+    public virtual EmployeeModelDto Admin { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает сотрудника, которому назначили должность
     /// </summary>
-    public EmployeeModelDto Employee { get; set; }
+    public virtual EmployeeModelDto Employee { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает назначенную должность.
     /// </summary>
-    public EmployeePositionModelDto EmployeePosition { get; set; }
+    public virtual EmployeePositionModelDto EmployeePosition { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает основание назанчения должности. 

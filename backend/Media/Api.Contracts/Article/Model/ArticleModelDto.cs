@@ -14,12 +14,12 @@ public class ArticleModelDto
     /// <summary>
     /// Возвращает или устанавливает автора новости.
     /// </summary>
-    public UserModelDto Author { get; set; }
+    public virtual UserModelDto Author { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает редактора новости.
     /// </summary>
-    public EmployeeModelDto Editor { get; set; }
+    public virtual EmployeeModelDto Editor { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает загаловок новости.

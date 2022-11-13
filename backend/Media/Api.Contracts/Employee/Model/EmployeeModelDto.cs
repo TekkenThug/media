@@ -13,7 +13,7 @@ public class EmployeeModelDto
     /// <summary>
     /// Возвращает или устанавливает должность сотрудника.
     /// </summary>
-    public EmployeePositionModelDto Position { get; set; }
+    public virtual EmployeePositionModelDto Position { get; set; }
         
     /// <summary>
     /// Возвращает или устанавливает логин сотрудника.

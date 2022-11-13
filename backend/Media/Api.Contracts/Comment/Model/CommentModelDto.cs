@@ -15,17 +15,17 @@ public class CommentModelDto
     /// <summary>
     /// Возвращает или устанавливает модератора, который скрыл комментарий.
     /// </summary>
-    public EmployeeModelDto Moderator { get; set; }
+    public virtual EmployeeModelDto Moderator { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает автора комментария.
     /// </summary>
-    public UserModelDto Author { get; set; }
+    public virtual UserModelDto Author { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает новость к который был написан комментарий.
     /// </summary>
-    public ArticleModelDto Article { get; set; }
+    public virtual ArticleModelDto Article { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает текст комментария.
