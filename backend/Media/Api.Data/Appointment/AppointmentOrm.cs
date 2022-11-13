@@ -1,9 +1,9 @@
-﻿using Api.Contracts.Employee.Model;
-using Api.Contracts.EmployeePosition.Model;
+﻿using Api.Data.EmployeePosition;
+using Api.Data.Employee;
 
-namespace Api.Contracts.Appointment.Model;
+namespace Api.Data.Appointment;
 
-public class AppointmentModelDto
+public class AppointmentOrm : IEntityOrm
 {
     /// <summary>
     /// Возвращает или устанавливает идентификатор назначения должности.
@@ -13,17 +13,17 @@ public class AppointmentModelDto
     /// <summary>
     /// Возвращает или устанавливает администратора, который назначил должность
     /// </summary>
-    public virtual EmployeeModelDto Admin { get; set; }
+    public virtual EmployeeOrm Admin { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает сотрудника, которому назначили должность
     /// </summary>
-    public virtual EmployeeModelDto Employee { get; set; }
+    public virtual EmployeeOrm Employee { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает назначенную должность.
     /// </summary>
-    public virtual EmployeePositionModelDto EmployeePosition { get; set; }
+    public virtual EmployeePositionOrm EmployeePosition { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает основание назанчения должности. 

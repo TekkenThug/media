@@ -1,10 +1,16 @@
-﻿using Api.Db;
+﻿using Api.Data;
+using Api.Data.Employee;
 
 namespace Api.Services.Employee;
 
-public class EmployeeService : MediaServiceBase, IEmployeeService
+public class EmployeeService  : DbServiceEntityBase<EmployeeOrm, EmployeeDbContext>, IEmployeeService
 {
-    public EmployeeService(ApplicationContext context) : base(context)
+    public EmployeeService(MediaDbContext context) : base(context)
     {
+    }
+
+    protected override EmployeeDbContext CreateDbContext()
+    {
+        return new EmployeeDbContext(this.Context);
     }
 }

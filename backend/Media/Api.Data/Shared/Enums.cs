@@ -1,4 +1,4 @@
-﻿namespace Api.Contracts.Shared;
+﻿namespace Api.Data.Shared;
 
 public enum ArticleStatus
 {

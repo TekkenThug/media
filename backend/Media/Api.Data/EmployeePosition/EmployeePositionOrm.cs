@@ -1,8 +1,8 @@
-﻿using Api.Contracts.Shared;
+﻿using Api.Data.Shared;
 
-namespace Api.Contracts.EmployeePosition.Model;
+namespace Api.Data.EmployeePosition;
 
-public class EmployeePositionModelDto
+public class EmployeePositionOrm : IEntityOrm
 {    
     /// <summary>
     /// Возвращает или устанавливает идентификатор должности.

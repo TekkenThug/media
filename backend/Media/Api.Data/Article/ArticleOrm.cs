@@ -1,10 +1,11 @@
-﻿using Api.Contracts.Employee.Model;
-using Api.Contracts.Shared;
-using Api.Contracts.User.Model;
+﻿using System;
+using Api.Data.Shared;
+using Api.Data.User;
+using Api.Data.Employee;
 
-namespace Api.Contracts.Article.Model;
+namespace Api.Data.Article;
 
-public class ArticleModelDto
+public class ArticleOrm : IEntityOrm
 {
     /// <summary>
     /// Возвращает или устанавливает идентификатор новости.
@@ -14,12 +15,12 @@ public class ArticleModelDto
     /// <summary>
     /// Возвращает или устанавливает автора новости.
     /// </summary>
-    public virtual UserModelDto Author { get; set; }
+    public virtual UserOrm Author { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает редактора новости.
     /// </summary>
-    public virtual EmployeeModelDto Editor { get; set; }
+    public virtual EmployeeOrm Editor { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает загаловок новости.

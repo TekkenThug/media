@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Api.Db\Api.Db.csproj" />
+      <ProjectReference Include="..\Api.Data\Api.Data.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,10 +1,16 @@
-﻿using Api.Db;
+﻿using Api.Data;
+using Api.Data.Article;
 
 namespace Api.Services.Article;
 
-public class ArticleService : MediaServiceBase, IArticleService
+public class ArticleService  : DbServiceEntityBase<ArticleOrm, ArticleDbContext>, IArticleService
 {
-    public ArticleService(ApplicationContext context) : base(context)
+    public ArticleService(MediaDbContext context) : base(context)
     {
+    }
+
+    protected override ArticleDbContext CreateDbContext()
+    {
+        return new ArticleDbContext(this.Context);
     }
 }

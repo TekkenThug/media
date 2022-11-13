@@ -1,8 +1,8 @@
 ﻿namespace Api.Services.Appointment;
 
-public class AppointmentController : MediaControllerBase<AppointmentService>, IAppointmentService
+public class AppointmentController : MediaControllerBase<IAppointmentService>, IAppointmentService
 {
-    public AppointmentController(AppointmentService service) : base(service)
+    public AppointmentController(IAppointmentService service) : base(service)
     {
     }
 }

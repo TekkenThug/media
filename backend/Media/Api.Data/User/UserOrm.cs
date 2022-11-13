@@ -1,10 +1,10 @@
-﻿using Api.Contracts.Employee.Model;
-using Api.Contracts.Shared;
+﻿using Api.Data.Shared;
+using Api.Data.Employee;
 
-namespace Api.Contracts.User.Model;
+namespace Api.Data.User;
 
-public class UserModelDto
-{    
+public class UserOrm : IEntityOrm
+{
     /// <summary>
     /// Возвращает или устанавливает идентификатор пользователя.
     /// </summary>
@@ -13,7 +13,7 @@ public class UserModelDto
     /// <summary>
     /// Возвращает или устанавливает модератора, который заблокировал пользователя.
     /// </summary>
-    public virtual EmployeeModelDto Moderator { get; set; }
+    public EmployeeOrm Moderator { get; set; }
         
     /// <summary>
     /// Возвращает или устанавливает статус пользователя.

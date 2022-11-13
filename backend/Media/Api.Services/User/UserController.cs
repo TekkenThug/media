@@ -1,8 +1,10 @@
-﻿namespace Api.Services.User;
+﻿using Api.Data.User;
 
-public class UserController : MediaControllerBase<UserService>, IUserService
+namespace Api.Services.User;
+
+public class UserController : MediaControllerBase<IUserService>, IUserService
 {
-    public UserController(UserService service) : base(service)
+    public UserController(IUserService service) : base(service)
     {
     }
 }

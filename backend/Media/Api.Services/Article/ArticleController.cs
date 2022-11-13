@@ -1,8 +1,8 @@
 ﻿namespace Api.Services.Article;
 
-public class ArticleController : MediaControllerBase<ArticleService>, IArticleService
+public class ArticleController : MediaControllerBase<IArticleService>, IArticleService
 {
-    public ArticleController(ArticleService service) : base(service)
+    public ArticleController(IArticleService service) : base(service)
     {
     }
 }

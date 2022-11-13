@@ -1,10 +1,16 @@
-﻿using Api.Db;
+﻿using Api.Data;
+using Api.Data.Comment;
 
 namespace Api.Services.Comment;
 
-public class CommentService : MediaServiceBase, ICommentService
+public class CommentService  : DbServiceEntityBase<CommentOrm, CommentDbContext>, ICommentService
 {
-    public CommentService(ApplicationContext context) : base(context)
+    public CommentService(MediaDbContext context) : base(context)
     {
+    }
+
+    protected override CommentDbContext CreateDbContext()
+    {
+        return new CommentDbContext(this.Context);
     }
 }

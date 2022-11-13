@@ -1,9 +1,10 @@
-﻿using Api.Contracts.EmployeePosition.Model;
-using Api.Contracts.Shared;
+﻿using Api.Data;
+using Api.Data.EmployeePosition;
+using Api.Data.Shared;
 
-namespace Api.Contracts.Employee.Model;
+namespace Api.Data.Employee;
 
-public class EmployeeModelDto
+public class EmployeeOrm : IEntityOrm
 {    
     /// <summary>
     /// Возвращает или устанавливает идентификатор сотрудника.
@@ -13,7 +14,7 @@ public class EmployeeModelDto
     /// <summary>
     /// Возвращает или устанавливает должность сотрудника.
     /// </summary>
-    public virtual EmployeePositionModelDto Position { get; set; }
+    public virtual EmployeePositionOrm Position { get; set; }
         
     /// <summary>
     /// Возвращает или устанавливает логин сотрудника.

@@ -1,11 +1,12 @@
-﻿using Api.Contracts.Article.Model;
-using Api.Contracts.Employee.Model;
-using Api.Contracts.Shared;
-using Api.Contracts.User.Model;
+﻿using System;
+using Api.Data.Article;
+using Api.Data.Shared;
+using Api.Data.User;
+using Api.Data.Employee;
 
-namespace Api.Contracts.Comment.Model;
+namespace Api.Data.Comment;
 
-public class CommentModelDto
+public class CommentOrm : IEntityOrm
 {
     /// <summary>
     /// Возвращает или устанавливает идентификатор комментария.
@@ -15,17 +16,17 @@ public class CommentModelDto
     /// <summary>
     /// Возвращает или устанавливает модератора, который скрыл комментарий.
     /// </summary>
-    public virtual EmployeeModelDto Moderator { get; set; }
+    public virtual EmployeeOrm Moderator { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает автора комментария.
     /// </summary>
-    public virtual UserModelDto Author { get; set; }
+    public virtual UserOrm Author { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает новость к который был написан комментарий.
     /// </summary>
-    public virtual ArticleModelDto Article { get; set; }
+    public virtual ArticleOrm Article { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает текст комментария.

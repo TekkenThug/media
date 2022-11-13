@@ -2,7 +2,7 @@
 
 namespace Api.Services;
 
-public class MediaControllerBase<TService> : ControllerBase where TService : MediaServiceBase
+public class MediaControllerBase<TService> : ControllerBase
 {
     protected readonly TService Service;
 

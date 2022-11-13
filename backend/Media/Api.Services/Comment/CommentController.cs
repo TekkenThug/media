@@ -1,8 +1,8 @@
 ﻿namespace Api.Services.Comment;
 
-public class CommentController : MediaControllerBase<CommentService>, ICommentService
+public class CommentController : MediaControllerBase<ICommentService>, ICommentService
 {
-    public CommentController(CommentService service) : base(service)
+    public CommentController(ICommentService service) : base(service)
     {
     }
 }
