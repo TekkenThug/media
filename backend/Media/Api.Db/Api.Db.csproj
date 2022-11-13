@@ -7,11 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+      <Folder Include="Migrations" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Api.Db\Api.Db.csproj" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Api.Contracts\Api.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

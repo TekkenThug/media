@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Contracts", "Api.Contra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Services", "Api.Services\Api.Services.csproj", "{B070FBDA-8657-43EF-B7F5-368A2073D247}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Db", "Api.Db\Api.Db.csproj", "{49307B95-ABD0-4896-872A-FAE7B540336D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{B070FBDA-8657-43EF-B7F5-368A2073D247}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B070FBDA-8657-43EF-B7F5-368A2073D247}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B070FBDA-8657-43EF-B7F5-368A2073D247}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49307B95-ABD0-4896-872A-FAE7B540336D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49307B95-ABD0-4896-872A-FAE7B540336D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49307B95-ABD0-4896-872A-FAE7B540336D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49307B95-ABD0-4896-872A-FAE7B540336D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
