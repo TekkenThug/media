@@ -11,9 +11,9 @@ public readonly struct CommentDbContext : IEntityDbContext<CommentOrm>
         this.Comments = db.Set<CommentOrm>();
     }
     
-    public CommentOrm GetModel(int modelId)
+    public async Task<CommentOrm> GetModel(int modelId)
     {
-        return GetModels().FirstOrDefault(x => x.Id == modelId);
+        return await GetModels().FirstOrDefaultAsync(x => x.Id == modelId);
     }
 
     public IQueryable<CommentOrm> GetModels()

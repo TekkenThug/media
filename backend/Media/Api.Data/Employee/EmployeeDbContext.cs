@@ -11,9 +11,9 @@ public readonly struct EmployeeDbContext : IEntityDbContext<EmployeeOrm>
         this.Employees = db.Set<EmployeeOrm>();
     }
     
-    public EmployeeOrm GetModel(int modelId)
+    public async Task<EmployeeOrm> GetModel(int modelId)
     {
-        return GetModels().FirstOrDefault(x => x.Id == modelId);
+        return await GetModels().FirstOrDefaultAsync(x => x.Id == modelId);
     }
 
     public IQueryable<EmployeeOrm> GetModels()

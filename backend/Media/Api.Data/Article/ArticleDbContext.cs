@@ -11,9 +11,9 @@ public readonly struct ArticleDbContext : IEntityDbContext<ArticleOrm>
         this.Articles = db.Set<ArticleOrm>();
     }
     
-    public ArticleOrm GetModel(int modelId)
+    public async Task<ArticleOrm> GetModel(int modelId)
     {
-        return GetModels().FirstOrDefault(x => x.Id == modelId);
+        return await GetModels().FirstOrDefaultAsync(x => x.Id == modelId);
     }
 
     public IQueryable<ArticleOrm> GetModels()

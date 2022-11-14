@@ -2,7 +2,7 @@
 
 public interface IEntityDbContext<TOrmModel>
 {
-    TOrmModel GetModel(int modelId);
+    Task<TOrmModel> GetModel(int modelId);
 
     IQueryable<TOrmModel> GetModels();
 }

@@ -11,9 +11,9 @@ public readonly struct AppointmentDbContext : IEntityDbContext<AppointmentOrm>
         this.Appointments = db.Set<AppointmentOrm>();
     }
     
-    public AppointmentOrm GetModel(int modelId)
+    public async Task<AppointmentOrm> GetModel(int modelId)
     {
-        return GetModels().FirstOrDefault(x => x.Id == modelId);
+        return await GetModels().FirstOrDefaultAsync(x => x.Id == modelId);
     }
 
     public IQueryable<AppointmentOrm> GetModels()

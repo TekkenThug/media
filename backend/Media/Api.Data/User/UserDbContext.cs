@@ -11,9 +11,9 @@ public readonly struct UserDbContext : IEntityDbContext<UserOrm>
         this.Users = db.Set<UserOrm>();
     }
     
-    public UserOrm GetModel(int modelId)
+    public async Task<UserOrm> GetModel(int modelId)
     {
-        return GetModels().FirstOrDefault(x => x.Id == modelId);
+        return await GetModels().FirstOrDefaultAsync(x => x.Id == modelId);
     }
 
     public IQueryable<UserOrm> GetModels()
