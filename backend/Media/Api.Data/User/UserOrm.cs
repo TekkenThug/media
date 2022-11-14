@@ -1,4 +1,5 @@
-﻿using Api.Data.Shared;
+﻿using System.ComponentModel.DataAnnotations;
+using Api.Data.Shared;
 using Api.Data.Employee;
 
 namespace Api.Data.User;
@@ -8,6 +9,7 @@ public class UserOrm : IEntityOrm
     /// <summary>
     /// Возвращает или устанавливает идентификатор пользователя.
     /// </summary>
+    [Key]
     public int Id { get; set; }
         
     /// <summary>

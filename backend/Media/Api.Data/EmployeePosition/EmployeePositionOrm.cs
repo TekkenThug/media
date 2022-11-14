@@ -1,4 +1,5 @@
-﻿using Api.Data.Shared;
+﻿using System.ComponentModel.DataAnnotations;
+using Api.Data.Shared;
 
 namespace Api.Data.EmployeePosition;
 
@@ -7,6 +8,7 @@ public class EmployeePositionOrm : IEntityOrm
     /// <summary>
     /// Возвращает или устанавливает идентификатор должности.
     /// </summary>
+    [Key]
     public int Id { get; set; }
         
     /// <summary>

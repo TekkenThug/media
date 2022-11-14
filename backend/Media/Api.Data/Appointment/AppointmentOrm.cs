@@ -1,4 +1,5 @@
-﻿using Api.Data.EmployeePosition;
+﻿using System.ComponentModel.DataAnnotations;
+using Api.Data.EmployeePosition;
 using Api.Data.Employee;
 
 namespace Api.Data.Appointment;
@@ -8,6 +9,7 @@ public class AppointmentOrm : IEntityOrm
     /// <summary>
     /// Возвращает или устанавливает идентификатор назначения должности.
     /// </summary>
+    [Key]
     public int Id { get; set; }
     
     /// <summary>

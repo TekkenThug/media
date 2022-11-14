@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Api.Data.Article;
 using Api.Data.Shared;
 using Api.Data.User;
@@ -11,6 +12,7 @@ public class CommentOrm : IEntityOrm
     /// <summary>
     /// Возвращает или устанавливает идентификатор комментария.
     /// </summary>
+    [Key]
     public int Id { get; set; }
     
     /// <summary>

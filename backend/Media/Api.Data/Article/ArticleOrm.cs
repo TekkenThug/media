@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Api.Data.Shared;
 using Api.Data.User;
 using Api.Data.Employee;
@@ -10,6 +11,7 @@ public class ArticleOrm : IEntityOrm
     /// <summary>
     /// Возвращает или устанавливает идентификатор новости.
     /// </summary>
+    [Key]
     public int Id { get; set; }
     
     /// <summary>
