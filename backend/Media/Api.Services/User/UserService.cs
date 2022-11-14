@@ -13,5 +13,4 @@ public class UserService : DbServiceEntityBase<UserOrm, UserDbContext>, IUserSer
     {
         return new UserDbContext(this.Context);
     }
-
 }

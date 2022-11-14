@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using Api.Data.Shared;
 using Api.Data.User;
 using Api.Data.Employee;
@@ -62,7 +61,7 @@ public class ArticleOrm : IEntityOrm
     /// <summary>
     /// Возвращает или устанавливает дату и время последнего изменения новости.
     /// </summary>
-    public DateTime LastModifiedDateTime { get; set; }
+    public DateTimeOffset LastModifiedDateTime { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает категорию новости.

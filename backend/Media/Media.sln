@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Services", "Api.Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Data", "Api.Data\Api.Data.csproj", "{49307B95-ABD0-4896-872A-FAE7B540336D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Data.Migrations", "Api.Data.Migrations\Api.Data.Migrations.csproj", "{882D741A-2109-473C-A419-FE90B2886C58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{49307B95-ABD0-4896-872A-FAE7B540336D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49307B95-ABD0-4896-872A-FAE7B540336D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49307B95-ABD0-4896-872A-FAE7B540336D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{882D741A-2109-473C-A419-FE90B2886C58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{882D741A-2109-473C-A419-FE90B2886C58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{882D741A-2109-473C-A419-FE90B2886C58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{882D741A-2109-473C-A419-FE90B2886C58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
