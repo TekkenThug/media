@@ -16,7 +16,7 @@ public class ArticleOrm : IEntityOrm
     /// <summary>
     /// Возвращает или устанавливает автора новости.
     /// </summary>
-    public virtual UserOrm Author { get; set; }
+    public virtual EmployeeOrm Author { get; set; }
     
     /// <summary>
     /// Возвращает или устанавливает редактора новости.

@@ -9,7 +9,7 @@ public class M004_Articles : NonReversibleMigration
     {
         this.Create.Table("Articles")
             .WithColumn("Id").AsInt64().PrimaryKey()
-            .WithColumn("AuthorId").AsInt64().NotNullable().ForeignKey("Users", "Id")
+            .WithColumn("AuthorId").AsInt64().NotNullable().ForeignKey("Employees", "Id")
             .WithColumn("EditorId").AsInt64().NotNullable().ForeignKey("Employees", "Id")
             .WithColumn("Title").AsString().NotNullable()
             .WithColumn("Path").AsString().NotNullable()
