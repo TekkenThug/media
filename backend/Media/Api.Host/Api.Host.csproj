@@ -6,4 +6,18 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Api.Data.Migrations\Api.Data.Migrations.csproj" />
+      <ProjectReference Include="..\Api.Data\Api.Data.csproj" />
+      <ProjectReference Include="..\Api.Services\Api.Services.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+      <PackageReference Include="StructureMap.Microsoft.DependencyInjection" Version="2.0.0" />
+      <PackageReference Include="Topshelf" Version="4.3.1-develop.253" />
+    </ItemGroup>
+
 </Project>
