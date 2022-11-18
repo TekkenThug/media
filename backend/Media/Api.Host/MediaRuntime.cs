@@ -28,6 +28,8 @@ public class MediaRuntime
             var configuration = this.Container.GetInstance<MediaConfiguration>();
 
             MigrateDatabase(configuration);
+            
+            Console.WriteLine("Services started");
         }
         catch (Exception ex)
         {
