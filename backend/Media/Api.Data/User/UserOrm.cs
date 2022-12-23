@@ -30,7 +30,7 @@ public class UserOrm : IEntityOrm
     /// <summary>
     /// Возвращает или устанавливает пароль пользователя.
     /// </summary>
-    public string Password { get; set; }
+    public byte[] Password { get; set; }
         
     /// <summary>
     /// Возвращает или устанавливает фамилию пользователя.

@@ -11,7 +11,7 @@ public class M003_Users : NonReversibleMigration
             .WithColumn("Id").AsInt64().PrimaryKey()
             .WithColumn("ModeratorId").AsInt64().Nullable().ForeignKey("Employees", "Id")
             .WithColumn("Login").AsString().NotNullable()
-            .WithColumn("Password").AsString().NotNullable()
+            .WithColumn("Password").AsBinary().NotNullable()
             .WithColumn("LastName").AsString().NotNullable()
             .WithColumn("FirstName").AsString().NotNullable()
             .WithColumn("Surname").AsString().Nullable()
