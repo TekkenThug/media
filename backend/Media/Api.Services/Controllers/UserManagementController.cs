@@ -15,6 +15,13 @@ public class UserManagementController : MediaControllerBase
     private readonly IEmployeeService _employeeService;
     private readonly IUserService _userService;
 
+    [HttpGet]
+    [Route("ping")]
+    public Task<string> Ping()
+    {
+        return Task.FromResult("pong");
+    }
+
     public UserManagementController(IEmployeeService employeeService, IUserService userService)
     {
         _employeeService = employeeService;
