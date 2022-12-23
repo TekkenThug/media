@@ -12,7 +12,7 @@ public class M004_Articles : NonReversibleMigration
             .WithColumn("AuthorId").AsInt64().NotNullable().ForeignKey("Employees", "Id")
             .WithColumn("EditorId").AsInt64().NotNullable().ForeignKey("Employees", "Id")
             .WithColumn("Title").AsString().NotNullable()
-            .WithColumn("Path").AsString().NotNullable()
+            .WithColumn("Body").AsBinary().NotNullable()
             .WithColumn("Status").AsInt32().NotNullable()
             .WithColumn("PublicationDateTime").AsDateTimeOffset().Nullable()
             .WithColumn("HiddenDateTime").AsDateTimeOffset().Nullable()

@@ -29,9 +29,9 @@ public class ArticleOrm : IEntityOrm
     public string Title { get; set; }
     
     /// <summary>
-    /// Возвращает или устанавливает путь к файлу с новостью.
+    /// Возвращает или устанавливает содержимое новости.
     /// </summary>
-    public string Path { get; set; }
+    public byte[] Body { get; set; }
         
     /// <summary>
     /// Возвращает или устанавливает статус новости.
