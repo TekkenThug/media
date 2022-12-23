@@ -1,16 +1,22 @@
 ﻿using System.Text;
 using Api.Data;
 using Api.Data.Article;
+using Api.Data.Article.Operations.AddArticle;
 using Api.Data.Article.Operations.GetArticleListItems;
+using Api.Data.Article.Operations.PublishArticle;
 using Api.Data.Shared;
+using Api.Services.Employee;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Services.Article;
 
 public class ArticleService  : DbServiceEntityBase<ArticleOrm, ArticleDbContext>, IArticleService
 {
-    public ArticleService(MediaDbContext context) : base(context)
+    private readonly IEmployeeService _employeeService;
+    
+    public ArticleService(MediaDbContext context, IEmployeeService employeeService) : base(context)
     {
+        _employeeService = employeeService;
     }
 
     protected override ArticleDbContext CreateDbContext()
@@ -27,6 +33,26 @@ public class ArticleService  : DbServiceEntityBase<ArticleOrm, ArticleDbContext>
         result.Articles = await dbContext.GetModels().ConvertToListItems().ToListAsync();
 
         return result;
+    }
+
+    public async Task<PublishArticleResponse> PublishArticle(PublishArticleRequest request)
+    {
+        var result = new PublishArticleResponse();
+
+        ArticleOrm article = await GetModel(request.ArticleId);
+
+        article.Status = ArticleStatus.Published;
+        article.PublicationDateTime = DateTimeOffset.Now;
+        article.Editor = await _employeeService.GetModel(request.EditorId);
+
+        await InvokeAsyncOperation(result, async () => await Update(article));
+
+        return result;
+    }
+
+    public Task<AddArticleResponse> AddArticle(AddArticleRequest request)
+    {
+        throw new NotImplementedException();
     }
 }
 

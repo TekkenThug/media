@@ -101,6 +101,8 @@ public class UserService : DbServiceEntityBase<UserOrm, UserDbContext>, IUserSer
 
         user.Status = UserStatus.Active;
         user.Moderator = await _employeeService.GetModel(request.EmployeeId);
+        
+        await InvokeAsyncOperation(result, async () => await Update(user));
 
         return result;
     }

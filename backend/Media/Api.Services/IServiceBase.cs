@@ -2,9 +2,11 @@
 
 namespace Api.Services;
 
-public interface IServiceBase<TEntity> where TEntity : IEntityOrm
+public interface IServiceBase<TOrmModel> where TOrmModel : IEntityOrm
 {
-    Task<TEntity> GetModel(int id);
+    Task<TOrmModel> GetModel(int id);
     
-    Task<List<TEntity>> GetModels();
+    Task<List<TOrmModel>> GetModels();
+
+    public Task Update(TOrmModel model);
 }
