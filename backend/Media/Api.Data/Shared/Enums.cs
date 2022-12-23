@@ -2,30 +2,44 @@
 
 public enum ArticleStatus
 {
- //TODO:
+ InProgress,
+ Review,
+ Published,
+ Hidden
 }
 
 public enum EmployeeStatus
 {
- //TODO:
+ Active,
+ Blocked
 }
 
 public enum EmployeePositionPermissionLevel
 {
- //TODO:
+ Moderator = 2,
+ Copywriter = 3,
+ Editor = 4,
+ Administrator = 5
 }
 
 public enum UserStatus
 {
- //TODO:
+ Active,
+ Blocked
 }
 
 public enum CommentHiddenReason
 {
- //TODO:
+ Abuse,
+ BadLanguage,
+ Racism
 }
 
 public enum ArticleCategory
 {
- //TODO:
+ Politics,
+ Sports,
+ Events,
+ Accidents,
+ Other
 }
