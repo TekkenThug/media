@@ -21,6 +21,9 @@
       <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
       <PackageReference Include="StructureMap.Microsoft.DependencyInjection" Version="2.0.0" />
       <PackageReference Include="Topshelf" Version="4.3.1-develop.253" />
+        <PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
+        <PackageReference Include="System.Text.Encoding.Extensions" Version="4.3.0" />
+        <PackageReference Include="System.Runtime.Handles" Version="4.3.0" />
     </ItemGroup>
 
 </Project>
