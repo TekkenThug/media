@@ -4,12 +4,7 @@ namespace Api.Services;
 
 [Route("api/[controller]")]
 [ApiController]
-public class MediaControllerBase<TService> : ControllerBase
+public class MediaControllerBase : ControllerBase
 {
-    protected readonly TService Service;
 
-    public MediaControllerBase(TService service)
-    {
-        Service = service;
-    }
 }

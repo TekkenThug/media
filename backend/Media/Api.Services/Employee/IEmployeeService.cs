@@ -1,6 +1,7 @@
-﻿namespace Api.Services.Employee;
+﻿using Api.Data.Employee;
 
-public interface IEmployeeService
+namespace Api.Services.Employee;
+
+public interface IEmployeeService : IServiceBase<EmployeeOrm>
 {
-    
 }

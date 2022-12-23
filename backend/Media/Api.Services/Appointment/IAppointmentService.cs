@@ -1,6 +1,8 @@
-﻿namespace Api.Services.Appointment;
+﻿using Api.Data.Appointment;
 
-public interface IAppointmentService
+namespace Api.Services.Appointment;
+
+public interface IAppointmentService : IServiceBase<AppointmentOrm>
 {
     
 }

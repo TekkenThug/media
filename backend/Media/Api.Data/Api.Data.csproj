@@ -12,5 +12,9 @@
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.0" />
       <PackageReference Include="StructureMap" Version="4.7.1" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Employee\Operations" />
+    </ItemGroup>
     
 </Project>

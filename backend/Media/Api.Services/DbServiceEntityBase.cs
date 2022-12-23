@@ -1,6 +1,5 @@
 ﻿using Api.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Api.Services;
 
@@ -17,9 +16,35 @@ public abstract class DbServiceEntityBase<TOrmModel, TDbContext>
 
     protected abstract TDbContext CreateDbContext();
 
-    protected async Task InvokeAsyncOperation<TError>(
-        Func<ValueTask<EntityEntry<TOrmModel>>> operation,
-        OperationResultBase<TError> result) where TError : OperationErrorBase
+    public async Task<TOrmModel> GetModel(int id)
+    {
+        TDbContext dbContext = CreateDbContext();
+
+        return await dbContext.GetModel(id);
+    }
+
+    public async Task<List<TOrmModel>> GetModels()
+    {
+        TDbContext dbContext = CreateDbContext();
+
+        return await dbContext.GetModels().ToListAsync();
+    }
+
+    protected async Task InvokeAsyncOperation<TError>(OperationResultBase<TError> result, Func<Task> operation)
+        where TError : OperationErrorBase
+    {
+        try
+        {
+            await Task.Run(operation);
+        }
+        catch (Exception exception)
+        {
+            result.Error.UnexpectedError = exception.Message;
+            result.IsSucceeded = false;
+        }
+    }
+    
+    protected async Task InvokeAsyncOperation(OperationResultBase result, Func<Task> operation)
     {
         try
         {

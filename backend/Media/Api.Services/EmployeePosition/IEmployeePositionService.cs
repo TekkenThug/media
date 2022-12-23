@@ -1,6 +1,8 @@
-﻿namespace Api.Services.EmployeePosition;
+﻿using Api.Data.Employee;
+using Api.Data.EmployeePosition;
 
-public interface IEmployeePositionService
+namespace Api.Services.EmployeePosition;
+
+public interface IEmployeePositionService : IServiceBase<EmployeePositionOrm>
 {
-    
 }

@@ -1,6 +1,8 @@
-﻿namespace Api.Services.Comment;
+﻿using Api.Data.Comment;
 
-public interface ICommentService
+namespace Api.Services.Comment;
+
+public interface ICommentService : IServiceBase<CommentOrm>
 {
     
 }

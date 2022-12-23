@@ -2,16 +2,21 @@
 using Api.Data;
 using Api.Data.Shared;
 using Api.Data.User;
+using Api.Data.User.Operations.BlockUser;
 using Api.Data.User.Operations.UserAuthentication;
 using Api.Data.User.Operations.UserRegister;
+using Api.Services.Employee;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Services.User;
 
 public class UserService : DbServiceEntityBase<UserOrm, UserDbContext>, IUserService
 {
-    public UserService(MediaDbContext context) : base(context)
+    private readonly IEmployeeService _employeeService;
+    
+    public UserService(MediaDbContext context, IEmployeeService employeeService) : base(context)
     {
+        _employeeService = employeeService;
     }
 
     protected override UserDbContext CreateDbContext()
@@ -45,7 +50,8 @@ public class UserService : DbServiceEntityBase<UserOrm, UserDbContext>, IUserSer
             RegistrationDateTime = DateTimeOffset.Now
         };
 
-        await InvokeAsyncOperation(() => dbContext.Users.AddAsync(user), result);
+        async Task AddUser() => await dbContext.Users.AddAsync(user);
+        await InvokeAsyncOperation(result, operation: AddUser);
 
         return result;
     }
@@ -76,6 +82,25 @@ public class UserService : DbServiceEntityBase<UserOrm, UserDbContext>, IUserSer
         }
 
         result.IsSucceeded = true;
+
+        return result;
+    }
+
+    public async Task<BlockUserResponse> BlockUser(BlockUserRequest request)
+    {
+        var result = new BlockUserResponse();
+        var dbContext = CreateDbContext();
+        var user = await dbContext.Users.FirstOrDefaultAsync(x=>x.Id == request.UserId);
+
+        if (user == null)
+        {
+            result.Error.UserNotFound = true;
+
+            return result;
+        }
+
+        user.Status = UserStatus.Active;
+        user.Moderator = await _employeeService.GetModel(request.EmployeeId);
 
         return result;
     }

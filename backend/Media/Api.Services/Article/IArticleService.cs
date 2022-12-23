@@ -1,6 +1,8 @@
-﻿namespace Api.Services.Article;
+﻿using Api.Data.Article;
 
-public interface IArticleService 
+namespace Api.Services.Article;
+
+public interface IArticleService : IServiceBase<ArticleOrm>
 {
     
 }
