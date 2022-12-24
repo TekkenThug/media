@@ -6,6 +6,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>153ebd72-450b-4fac-8a2b-e731f2c331ce</UserSecretsId>
         <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
