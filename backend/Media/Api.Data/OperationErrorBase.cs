@@ -1,6 +1,6 @@
 ﻿namespace Api.Data;
 
-public abstract class OperationErrorBase
+public class OperationErrorBase
 {
     public string UnexpectedError { get; set; }
 }

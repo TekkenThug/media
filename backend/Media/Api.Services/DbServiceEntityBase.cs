@@ -37,6 +37,13 @@ public abstract class DbServiceEntityBase<TOrmModel, TDbContext>
         await this.Context.SaveChangesAsync();
     }
 
+    public async Task Add(TOrmModel model)
+    {
+        await this.Context.AddAsync(model);
+        
+        await this.Context.SaveChangesAsync();
+    }
+
     protected async Task InvokeAsyncOperation<TError>(OperationResultBase<TError> result, Func<Task> operation)
         where TError : OperationErrorBase
     {

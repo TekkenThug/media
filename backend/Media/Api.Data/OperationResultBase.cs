@@ -3,12 +3,12 @@
 public abstract class OperationResultBase
 {
     public bool IsSucceeded { get; set; }
-    
+
     public OperationErrorBase Error { get; set; }
 
     protected OperationResultBase()
     {
-        
+        Error = new OperationErrorBase();
     }
 
     protected OperationResultBase(OperationResultBase other)

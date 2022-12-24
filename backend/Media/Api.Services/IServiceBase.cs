@@ -9,4 +9,6 @@ public interface IServiceBase<TOrmModel> where TOrmModel : IEntityOrm
     Task<List<TOrmModel>> GetModels();
 
     public Task Update(TOrmModel model);
+    
+    public Task Add(TOrmModel model);
 }
